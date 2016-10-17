@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Gallery.GalleryActivity" />
-        <activity android:name=".recycleDemo.HomeActivity"></activity>
+        <activity android:name=".recycleDemo.HomeActivity" />
+        <activity android:name=".MovieDetail.MovieActivity"></activity>
     </application>
 
 </manifest>

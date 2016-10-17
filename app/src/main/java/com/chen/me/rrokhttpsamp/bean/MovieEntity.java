@@ -4,13 +4,14 @@ import com.chen.me.rrokhttpsamp.bean.Movie.Subject;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Administrator on 2016/10/13 0013.
  */
 
-public class MovieEntity {
+public class MovieEntity implements Serializable{
     @SerializedName("count")
     @Expose
     private int count;
@@ -69,5 +70,8 @@ public class MovieEntity {
 
     public void setTotal(int total) {
         this.total = total;
+    }
+
+    public MovieEntity() {
     }
 }

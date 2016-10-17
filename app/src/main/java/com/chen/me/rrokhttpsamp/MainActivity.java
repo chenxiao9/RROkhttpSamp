@@ -10,9 +10,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.chen.me.rrokhttpsamp.Gallery.GalleryActivity;
+import com.chen.me.rrokhttpsamp.MovieDetail.MovieActivity;
 import com.chen.me.rrokhttpsamp.api.MovieService;
 import com.chen.me.rrokhttpsamp.bean.MovieEntity;
 import com.chen.me.rrokhttpsamp.recycleDemo.HomeActivity;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -23,14 +26,18 @@ import rx.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
 
+    public MovieEntity movieData;
+
     @Bind(R.id.tv_result)
     public TextView tvResult;
-    @Bind(R.id.btn_click_me)
-    public Button btnClick;
-    @Bind(R.id.btn_detail)
-    public Button btnDetail;
-    @Bind(R.id.btn_recycle)
-    public Button btnRecycleDemo;
+//    @Bind(R.id.btn_click_me)
+//    public Button btnClick;
+//    @Bind(R.id.btn_detail)
+//    public Button btnDetail;
+//    @Bind(R.id.btn_recycle)
+//    public Button btnRecycleDemo;
+//    @Bind(R.id.btn_get_movie)
+//    public Button btnGetMovie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +63,14 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+
+    @OnClick(R.id.btn_get_movie)
+    public void getMovieDetail(View view){
+        Intent i=new Intent(MainActivity.this, MovieActivity.class);
+        i.putExtra("movieData",movieData);
+        startActivity(i);
+    }
+
     //进行网络请求
     private void getMovie(){
 
@@ -76,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onNext(MovieEntity movieEntity) {
+                movieData=movieEntity;
                 tvResult.setText(movieEntity.toString());
             }
         });
