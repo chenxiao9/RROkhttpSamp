@@ -27,6 +27,7 @@ import rx.schedulers.Schedulers;
 public class MainActivity extends AppCompatActivity {
 
     public MovieEntity movieData;
+    public Gson gson=new Gson();
 
     @Bind(R.id.tv_result)
     public TextView tvResult;
@@ -66,8 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_get_movie)
     public void getMovieDetail(View view){
+        if (movieData==null){
+            getMovie();
+        }
+        String stringData=gson.toJson(movieData);
+
         Intent i=new Intent(MainActivity.this, MovieActivity.class);
-        i.putExtra("movieData",movieData);
+        i.putExtra("movieData",stringData);
         startActivity(i);
     }
 
@@ -92,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onNext(MovieEntity movieEntity) {
                 movieData=movieEntity;
-                tvResult.setText(movieEntity.toString());
+                tvResult.setText(movieEntity.getTitle());
             }
         });
 
