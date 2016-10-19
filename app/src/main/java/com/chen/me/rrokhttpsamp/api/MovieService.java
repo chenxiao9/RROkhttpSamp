@@ -34,7 +34,6 @@ public class MovieService {
 
             Response response=chain.proceed(request);
 
-            MediaType mediaType=response.body().contentType();
             String content=response.body().toString();
             Log.e(TAG, "body: "+content);//输出返回信息
 

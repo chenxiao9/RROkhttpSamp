@@ -67,13 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_get_movie)
     public void getMovieDetail(View view){
-        if (movieData==null){
-            getMovie();
-        }
-        String stringData=gson.toJson(movieData);
+//        if (movieData==null){
+//            getMovie();
+//        }
+//        String stringData=gson.toJson(movieData);
 
         Intent i=new Intent(MainActivity.this, MovieActivity.class);
-        i.putExtra("movieData",stringData);
+//        i.putExtra("movieData",stringData);
         startActivity(i);
     }
 
